@@ -45,13 +45,13 @@ export const MusicPlayer: React.FC<IMusicPlayerProps> = (props) => {
         controls
         onEnded={(): void => {
           if (player.current !== null) {
-            if (!playingState.shufflePlaylist.length) {
-              player.current.seekTo(0);
-              ReactGA.event({
-                category: 'Video',
-                action: 'Loop Embedded Video',
-                label: playingState.currentSong,
-              });
+            let newVal;
+            if (
+              playingState.repeatPlaylist &&
+              playingState.currentPlaylistSong ===
+                playingState.shufflePlaylist.length - 1
+            ) {
+              newVal = 0;
             } else {
               ReactGA.event({
                 category: 'Video',
@@ -63,9 +63,9 @@ export const MusicPlayer: React.FC<IMusicPlayerProps> = (props) => {
                 playingState.shufflePlaylist.length - 1
               )
                 return;
-              const newVal = playingState.currentPlaylistSong + 1;
-              setCurrentPlaylistSong(newVal);
+              newVal = playingState.currentPlaylistSong + 1;
             }
+            setCurrentPlaylistSong(newVal);
           }
         }}
       />
