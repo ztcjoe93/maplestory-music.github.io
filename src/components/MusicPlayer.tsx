@@ -56,10 +56,8 @@ export const MusicPlayer: React.FC<IMusicPlayerProps> = (props) => {
               playingState.currentPlaylistSong ===
                 playingState.shufflePlaylist.length - 1
             ) {
-              console.log(`path1`);
               newVal = 0;
             } else {
-              console.log(`path2`);
               ReactGA.event({
                 category: 'Video',
                 action: 'Complete Playlist Video',
