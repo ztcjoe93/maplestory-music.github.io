@@ -49,7 +49,6 @@ export const MusicPlayer: React.FC<IMusicPlayerProps> = (props) => {
         }
         onEnded={(): void => {
           if (player.current !== null) {
-            console.log(`onEnded`);
             let newVal;
             if (
               playingState.repeatPlaylist &&
